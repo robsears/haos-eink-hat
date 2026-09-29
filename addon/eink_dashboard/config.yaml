@@ -1,0 +1,22 @@
+name: "E-Ink Dashboard"
+version: "0.1.0"
+slug: "eink_dashboard"
+description: >-
+  Drives a Waveshare 2.7" e-Paper HAT with Home Assistant status views,
+  navigated by the panel's 4 buttons.
+url: "https://github.com/robsears/haos-eink-hat"
+arch:
+  - aarch64
+  - armv7
+init: false
+homeassistant_api: true
+hassio_api: true  # Supervisor's own API (core/os/addon version+health info) for the Diagnostics view
+devices:
+  - /dev/spidev0.0
+  - /dev/gpiochip0
+options:
+  weather_entity: "weather.home"
+  temp_view_seconds: 18
+schema:
+  weather_entity: "str"
+  temp_view_seconds: "int(5,120)"
